@@ -1,0 +1,1289 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Bean &amp; Bite | اطلب قهوتك المفضلة الآن أونلاين</title>
+<meta name="description" content="Bean &amp; Bite - قهوة مختصة، حلويات طازجة، وتوصيل سريع. اطلب أونلاين الآن أو حمّل التطبيق واستمتع بتجربة قهوة لا تُنسى.">
+<meta name="keywords" content="Bean and Bite, قهوة, كافيه, توصيل قهوة, قهوة مصر, اطلب قهوة اونلاين">
+<meta property="og:title" content="Bean & Bite | قهوة مختصة وتوصيل سريع">
+<meta property="og:description" content="اطلب الآن من Bean & Bite واستمتع بتوصيل سريع لقهوتك المفضلة وجبتك الخفيفة أينما كنت.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#4B3225">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --coffee:#6F4E37;
+    --coffee-dark:#4B3225;
+    --beige:#E8DCCB;
+    --cream:#F8F5F0;
+    --white:#FFFFFF;
+    --gold:#C9A24B;
+    --gold-light:#E3C988;
+    --ink:#2B1D15;
+    --shadow-sm: 0 2px 8px rgba(75,50,37,0.08);
+    --shadow-md: 0 8px 24px rgba(75,50,37,0.12);
+    --shadow-lg: 0 20px 48px rgba(75,50,37,0.18);
+    --radius-sm: 10px;
+    --radius-md: 18px;
+    --radius-lg: 28px;
+    --ease: cubic-bezier(.22,.9,.32,1);
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Cairo', system-ui, sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;}
+  section{position:relative;}
+  .container{
+    width:100%;
+    max-width:1240px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:.85rem;
+    font-weight:700;
+    letter-spacing:.02em;
+    color:var(--coffee);
+    background:rgba(111,78,55,0.08);
+    padding:7px 16px;
+    border-radius:999px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:6px;height:6px;border-radius:50%;
+    background:var(--gold);
+    flex-shrink:0;
+  }
+  .section-title{
+    font-size:clamp(1.9rem, 4vw, 2.8rem);
+    font-weight:800;
+    color:var(--coffee-dark);
+    line-height:1.25;
+    margin-bottom:14px;
+  }
+  .section-sub{
+    font-size:clamp(1rem, 1.6vw, 1.15rem);
+    color:#6b5849;
+    max-width:560px;
+  }
+  .center{text-align:center;margin-inline:auto;}
+  .visually-hidden{
+    position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+    overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+  }
+  :focus-visible{
+    outline:3px solid var(--gold);
+    outline-offset:3px;
+    border-radius:6px;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    font-weight:700;
+    font-size:1rem;
+    padding:16px 34px;
+    border-radius:999px;
+    transition:transform .35s var(--ease), box-shadow .35s var(--ease), background .3s ease;
+    white-space:nowrap;
+    position:relative;
+    will-change:transform;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--gold-light), var(--gold));
+    color:var(--coffee-dark);
+    box-shadow:0 10px 30px rgba(201,162,75,0.45);
+  }
+  .btn-primary:hover{
+    transform:translateY(-3px) scale(1.02);
+    box-shadow:0 16px 40px rgba(201,162,75,0.55);
+  }
+  .btn-primary:active{transform:translateY(-1px) scale(.99);}
+  .btn-outline{
+    background:transparent;
+    color:var(--white);
+    border:1.5px solid rgba(255,255,255,0.55);
+    backdrop-filter:blur(6px);
+  }
+  .btn-outline:hover{
+    background:rgba(255,255,255,0.12);
+    border-color:#fff;
+    transform:translateY(-3px);
+  }
+  .btn-dark{
+    background:var(--coffee-dark);
+    color:var(--white);
+    box-shadow:var(--shadow-md);
+  }
+  .btn-dark:hover{transform:translateY(-3px); background:#3a2519;}
+  .btn-sm{padding:11px 22px; font-size:.9rem;}
+
+  /* ---------- Navbar ---------- */
+  .navbar{
+    position:fixed;
+    inset-inline:0;
+    top:0;
+    z-index:1000;
+    background:transparent;
+    transition:background .4s ease, box-shadow .4s ease, padding .3s ease;
+    padding:18px 0;
+  }
+  .navbar.scrolled{
+    background:rgba(248,245,240,0.9);
+    backdrop-filter:blur(14px);
+    box-shadow:var(--shadow-sm);
+    padding:10px 0;
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:800;
+    font-size:1.3rem;
+    color:var(--white);
+    transition:color .4s ease;
+  }
+  .navbar.scrolled .logo{color:var(--coffee-dark);}
+  .logo-mark{
+    width:42px;height:42px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg, var(--gold-light), var(--coffee));
+    box-shadow:var(--shadow-sm);
+    flex-shrink:0;
+  }
+  .logo-mark svg{width:24px;height:24px;}
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:34px;
+  }
+  .nav-links a{
+    font-weight:600;
+    font-size:.97rem;
+    color:var(--white);
+    position:relative;
+    padding:6px 0;
+    transition:color .4s ease;
+  }
+  .navbar.scrolled .nav-links a{color:var(--coffee-dark);}
+  .nav-links a::after{
+    content:'';
+    position:absolute;
+    bottom:0; right:0;
+    width:0; height:2px;
+    background:var(--gold);
+    transition:width .3s var(--ease);
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{display:flex; align-items:center; gap:14px;}
+  .nav-toggle{
+    display:none;
+    width:44px;height:44px;
+    border-radius:10px;
+    align-items:center;
+    justify-content:center;
+    background:rgba(255,255,255,0.15);
+    flex-shrink:0;
+  }
+  .navbar.scrolled .nav-toggle{background:rgba(111,78,55,0.1);}
+  .nav-toggle span,.nav-toggle::before,.nav-toggle::after{
+    content:'';
+    display:block;
+    width:20px;height:2px;
+    background:var(--white);
+    transition:.3s ease;
+  }
+  .navbar.scrolled .nav-toggle span,
+  .navbar.scrolled .nav-toggle::before,
+  .navbar.scrolled .nav-toggle::after{background:var(--coffee-dark);}
+  .nav-toggle{position:relative;}
+  .nav-toggle::before{position:absolute; top:14px;}
+  .nav-toggle::after{position:absolute; bottom:14px;}
+  .nav-toggle.active span{background:transparent;}
+  .nav-toggle.active::before{transform:rotate(45deg); top:21px;}
+  .nav-toggle.active::after{transform:rotate(-45deg); bottom:21px;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    position:relative;
+    background:
+      radial-gradient(ellipse 90% 70% at 80% -10%, rgba(201,162,75,0.25), transparent 60%),
+      linear-gradient(160deg, var(--coffee-dark) 0%, var(--coffee) 55%, #5c4030 100%);
+    overflow:hidden;
+    padding-top:120px;
+    padding-bottom:80px;
+  }
+  .hero-bg-pattern{
+    position:absolute; inset:0;
+    background-image:radial-gradient(rgba(255,255,255,0.06) 1.5px, transparent 1.5px);
+    background-size:26px 26px;
+    opacity:.5;
+    pointer-events:none;
+  }
+  .steam{
+    position:absolute;
+    width:60px;
+    pointer-events:none;
+    opacity:.18;
+    filter:blur(2px);
+  }
+  .steam svg{width:100%;}
+  .steam-1{top:8%; left:8%; animation:drift 9s ease-in-out infinite;}
+  .steam-2{bottom:12%; left:18%; width:40px; animation:drift 7s ease-in-out infinite 1s;}
+  @keyframes drift{
+    0%,100%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(-22px) rotate(3deg);}
+  }
+  .hero-inner{
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    align-items:center;
+    gap:48px;
+    position:relative;
+    z-index:2;
+  }
+  .hero-text h1{
+    font-size:clamp(2.2rem, 4.6vw, 3.6rem);
+    font-weight:900;
+    color:var(--white);
+    line-height:1.3;
+    margin-bottom:22px;
+    text-wrap:balance;
+    opacity:0;
+    transform:translateY(24px);
+    animation:riseIn .9s var(--ease) .15s forwards;
+  }
+  .hero-text h1 .accent{
+    background:linear-gradient(95deg, var(--gold-light), var(--gold));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero-text p{
+    font-size:clamp(1.02rem, 1.6vw, 1.2rem);
+    color:rgba(255,255,255,0.82);
+    max-width:520px;
+    margin-bottom:34px;
+    opacity:0;
+    transform:translateY(24px);
+    animation:riseIn .9s var(--ease) .35s forwards;
+  }
+  .hero-ctas{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:18px;
+    opacity:0;
+    transform:translateY(24px);
+    animation:riseIn .9s var(--ease) .55s forwards;
+  }
+  .hero-trust{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin-top:38px;
+    opacity:0;
+    transform:translateY(24px);
+    animation:riseIn .9s var(--ease) .75s forwards;
+  }
+  .hero-trust .stars{color:var(--gold); font-size:1rem; letter-spacing:2px;}
+  .hero-trust small{color:rgba(255,255,255,0.7); font-weight:600; font-size:.85rem;}
+  @keyframes riseIn{to{opacity:1; transform:translateY(0);}}
+
+  .hero-media{
+    position:relative;
+    opacity:0;
+    animation:fadeScale 1.1s var(--ease) .3s forwards;
+  }
+  @keyframes fadeScale{from{opacity:0; transform:scale(.92);} to{opacity:1; transform:scale(1);}}
+  .hero-media-frame{
+    position:relative;
+    border-radius:32px;
+    overflow:hidden;
+    aspect-ratio:1/1.05;
+    box-shadow:var(--shadow-lg);
+    animation:floatY 6s ease-in-out infinite;
+  }
+  @keyframes floatY{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-14px);}
+  }
+  .hero-media-frame img{width:100%;height:100%;object-fit:cover;}
+  .hero-badge{
+    position:absolute;
+    bottom:-22px; right:-18px;
+    background:var(--white);
+    border-radius:20px;
+    padding:16px 20px;
+    box-shadow:var(--shadow-lg);
+    display:flex;
+    align-items:center;
+    gap:12px;
+    animation:floatY 5s ease-in-out infinite .4s;
+  }
+  .hero-badge .num{font-size:1.5rem; font-weight:800; color:var(--coffee);}
+  .hero-badge small{display:block; color:#8a7866; font-size:.78rem; font-weight:600;}
+  .scroll-cue{
+    position:absolute;
+    bottom:28px; left:50%;
+    transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    color:rgba(255,255,255,0.65);
+    font-size:.78rem;
+    z-index:2;
+  }
+  .scroll-cue .dot-track{
+    width:22px; height:36px;
+    border:2px solid rgba(255,255,255,0.4);
+    border-radius:14px;
+    display:flex; justify-content:center; padding-top:6px;
+  }
+  .scroll-cue .dot{
+    width:4px;height:8px;border-radius:2px;
+    background:var(--gold-light);
+    animation:scrollDot 1.8s ease-in-out infinite;
+  }
+  @keyframes scrollDot{
+    0%{transform:translateY(0); opacity:1;}
+    70%{transform:translateY(10px); opacity:0;}
+    100%{opacity:0;}
+  }
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(36px);
+    transition:opacity .8s var(--ease), transform .8s var(--ease);
+  }
+  .reveal.in-view{opacity:1; transform:translateY(0);}
+  .reveal-stagger > * { transition-delay: calc(var(--i,0) * 110ms); }
+
+  /* ---------- Best Sellers ---------- */
+  .bestsellers{padding:120px 0 100px; background:var(--cream);}
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:24px;
+    margin-bottom:56px;
+  }
+  .product-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:30px;
+  }
+  .product-card{
+    background:var(--white);
+    border-radius:var(--radius-lg);
+    overflow:hidden;
+    box-shadow:var(--shadow-sm);
+    transition:transform .45s var(--ease), box-shadow .45s var(--ease);
+    display:flex;
+    flex-direction:column;
+  }
+  .product-card:hover{
+    transform:translateY(-10px);
+    box-shadow:var(--shadow-lg);
+  }
+  .product-media{
+    position:relative;
+    aspect-ratio:4/3.1;
+    overflow:hidden;
+    background:var(--beige);
+  }
+  .product-media img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .6s var(--ease);
+  }
+  .product-card:hover .product-media img{transform:scale(1.08);}
+  .product-tag{
+    position:absolute;
+    top:16px; right:16px;
+    background:var(--coffee-dark);
+    color:var(--white);
+    font-size:.75rem;
+    font-weight:700;
+    padding:6px 14px;
+    border-radius:999px;
+  }
+  .product-body{
+    padding:26px 26px 28px;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+  }
+  .product-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:12px;
+    margin-bottom:10px;
+  }
+  .product-name{font-size:1.2rem; font-weight:700; color:var(--coffee-dark);}
+  .product-price{
+    font-size:1.1rem;
+    font-weight:800;
+    color:var(--coffee);
+    white-space:nowrap;
+    background:rgba(111,78,55,0.08);
+    padding:4px 12px;
+    border-radius:999px;
+  }
+  .product-desc{
+    color:#7a6856;
+    font-size:.93rem;
+    margin-bottom:22px;
+    flex:1;
+  }
+  .add-cart-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    width:100%;
+    padding:13px 18px;
+    border-radius:14px;
+    background:var(--coffee-dark);
+    color:var(--white);
+    font-weight:700;
+    font-size:.95rem;
+    transition:background .3s ease, transform .3s ease;
+  }
+  .add-cart-btn:hover{background:var(--coffee); transform:translateY(-2px);}
+  .add-cart-btn.added{background:#3d7a4f;}
+  .add-cart-btn svg{width:18px;height:18px; transition:transform .3s ease;}
+  .add-cart-btn:hover svg{transform:translateY(-2px) rotate(-8deg);}
+
+  /* ---------- Why Us ---------- */
+  .why-us{
+    padding:100px 0;
+    background:linear-gradient(180deg, var(--beige) 0%, var(--cream) 100%);
+  }
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+    margin-top:56px;
+  }
+  .why-card{
+    background:var(--white);
+    border-radius:var(--radius-md);
+    padding:38px 30px;
+    text-align:center;
+    box-shadow:var(--shadow-sm);
+    transition:transform .4s var(--ease), box-shadow .4s var(--ease);
+  }
+  .why-card:hover{transform:translateY(-8px); box-shadow:var(--shadow-md);}
+  .why-icon{
+    width:74px; height:74px;
+    border-radius:50%;
+    background:linear-gradient(135deg, var(--beige), #f0e6d8);
+    display:flex; align-items:center; justify-content:center;
+    margin:0 auto 22px;
+    font-size:2rem;
+    transition:transform .4s var(--ease);
+  }
+  .why-card:hover .why-icon{transform:scale(1.1) rotate(-6deg);}
+  .why-card h3{font-size:1.18rem; font-weight:700; color:var(--coffee-dark); margin-bottom:10px;}
+  .why-card p{color:#7a6856; font-size:.93rem;}
+
+  /* ---------- Testimonials ---------- */
+  .testimonials{padding:110px 0; background:var(--coffee-dark); position:relative; overflow:hidden;}
+  .testimonials::before{
+    content:'';
+    position:absolute; inset:0;
+    background:radial-gradient(ellipse 60% 50% at 15% 20%, rgba(201,162,75,0.12), transparent 60%);
+  }
+  .testimonials .section-title, .testimonials .eyebrow{color:var(--white);}
+  .testimonials .eyebrow{background:rgba(255,255,255,0.1); color:var(--gold-light);}
+  .testimonials .eyebrow::before{background:var(--gold-light);}
+  .testimonials .section-sub{color:rgba(255,255,255,0.65);}
+  .t-track-wrap{
+    position:relative;
+    margin-top:54px;
+    z-index:2;
+  }
+  .t-track{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:26px;
+  }
+  .t-card{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.1);
+    backdrop-filter:blur(8px);
+    border-radius:var(--radius-md);
+    padding:32px 28px;
+    transition:transform .4s var(--ease), background .4s ease;
+  }
+  .t-card:hover{transform:translateY(-6px); background:rgba(255,255,255,0.09);}
+  .t-stars{color:var(--gold); font-size:.95rem; margin-bottom:16px; letter-spacing:3px;}
+  .t-quote{color:rgba(255,255,255,0.88); font-size:1rem; margin-bottom:24px; min-height:80px;}
+  .t-person{display:flex; align-items:center; gap:12px;}
+  .t-avatar{
+    width:46px; height:46px;
+    border-radius:50%;
+    background:linear-gradient(135deg, var(--gold-light), var(--coffee));
+    display:flex; align-items:center; justify-content:center;
+    color:var(--coffee-dark);
+    font-weight:800;
+    flex-shrink:0;
+  }
+  .t-person strong{display:block; color:var(--white); font-size:.95rem;}
+  .t-person span{color:rgba(255,255,255,0.55); font-size:.8rem;}
+  .t-dots{
+    display:none;
+    justify-content:center;
+    gap:8px;
+    margin-top:28px;
+  }
+  .t-dots button{
+    width:8px; height:8px; border-radius:50%;
+    background:rgba(255,255,255,0.3);
+    transition:.3s ease;
+  }
+  .t-dots button.active{background:var(--gold); width:22px; border-radius:5px;}
+
+  /* ---------- App CTA ---------- */
+  .app-cta{
+    padding:110px 0;
+    background:linear-gradient(135deg, var(--coffee) 0%, var(--coffee-dark) 100%);
+    position:relative;
+    overflow:hidden;
+  }
+  .app-cta::after{
+    content:'';
+    position:absolute;
+    width:480px; height:480px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(201,162,75,0.22), transparent 70%);
+    top:-150px; left:-120px;
+    pointer-events:none;
+  }
+  .app-cta-inner{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:48px;
+    position:relative;
+    z-index:2;
+  }
+  .app-cta h2{
+    font-size:clamp(1.9rem, 3.6vw, 2.6rem);
+    font-weight:800;
+    color:var(--white);
+    margin-bottom:18px;
+    line-height:1.3;
+  }
+  .app-cta p{color:rgba(255,255,255,0.75); font-size:1.05rem; margin-bottom:34px; max-width:460px;}
+  .store-btns{display:flex; flex-wrap:wrap; gap:16px;}
+  .store-btn{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:var(--white);
+    color:var(--coffee-dark);
+    padding:13px 24px;
+    border-radius:14px;
+    box-shadow:var(--shadow-md);
+    transition:transform .35s var(--ease), box-shadow .35s var(--ease);
+  }
+  .store-btn:hover{transform:translateY(-4px); box-shadow:var(--shadow-lg);}
+  .store-btn svg{width:28px;height:28px; flex-shrink:0;}
+  .store-btn .store-label{text-align:right;}
+  .store-btn small{display:block; font-size:.7rem; color:#8a7866;}
+  .store-btn strong{display:block; font-size:1rem; font-weight:700;}
+  .app-cta-media{
+    position:relative;
+    display:flex;
+    justify-content:center;
+  }
+  .phone-mock{
+    width:260px;
+    border-radius:36px;
+    overflow:hidden;
+    box-shadow:0 30px 70px rgba(0,0,0,0.45);
+    border:6px solid #2c1c12;
+    animation:floatY 6.5s ease-in-out infinite;
+  }
+  .phone-mock img{width:100%; display:block;}
+
+  /* ---------- Footer ---------- */
+  .site-footer{
+    background:#241509;
+    color:rgba(255,255,255,0.7);
+    padding:80px 0 30px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1fr;
+    gap:40px;
+    padding-bottom:48px;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .footer-brand .logo{color:var(--white); margin-bottom:16px;}
+  .footer-brand p{font-size:.92rem; line-height:1.8; max-width:280px; color:rgba(255,255,255,0.55);}
+  .footer-col h4{
+    color:var(--white);
+    font-size:1rem;
+    font-weight:700;
+    margin-bottom:20px;
+  }
+  .footer-col ul li{margin-bottom:13px;}
+  .footer-col ul li a{
+    font-size:.92rem;
+    color:rgba(255,255,255,0.6);
+    transition:color .3s ease, padding-right .3s ease;
+  }
+  .footer-col ul li a:hover{color:var(--gold-light); padding-right:4px;}
+  .footer-hours{display:flex; align-items:flex-start; gap:10px; font-size:.92rem; color:rgba(255,255,255,0.6); line-height:1.7;}
+  .footer-hours svg{width:18px;height:18px; flex-shrink:0; margin-top:3px; color:var(--gold-light);}
+  .social-row{display:flex; gap:12px; margin-top:22px;}
+  .social-row a{
+    width:40px; height:40px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.08);
+    display:flex; align-items:center; justify-content:center;
+    transition:background .3s ease, transform .3s ease;
+  }
+  .social-row a:hover{background:var(--gold); transform:translateY(-3px);}
+  .social-row svg{width:18px;height:18px;}
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+    padding-top:26px;
+    font-size:.85rem;
+    color:rgba(255,255,255,0.45);
+  }
+  .footer-bottom a{color:rgba(255,255,255,0.45); transition:color .3s ease;}
+  .footer-bottom a:hover{color:var(--gold-light);}
+  .footer-legal{display:flex; gap:20px;}
+
+  /* ---------- Sticky mobile order bar ---------- */
+  .sticky-cta{
+    position:fixed;
+    bottom:0; inset-inline:0;
+    z-index:999;
+    background:var(--white);
+    box-shadow:0 -8px 24px rgba(75,50,37,0.15);
+    padding:12px 16px;
+    display:none;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    transform:translateY(100%);
+    transition:transform .4s var(--ease);
+  }
+  .sticky-cta.show{transform:translateY(0);}
+  .sticky-cta .info strong{display:block; font-size:.9rem; color:var(--coffee-dark);}
+  .sticky-cta .info span{font-size:.78rem; color:#8a7866;}
+
+  /* ---------- Toast ---------- */
+  .toast{
+    position:fixed;
+    bottom:30px; left:50%;
+    transform:translateX(-50%) translateY(20px);
+    background:var(--coffee-dark);
+    color:var(--white);
+    padding:14px 26px;
+    border-radius:999px;
+    font-size:.9rem;
+    font-weight:600;
+    box-shadow:var(--shadow-lg);
+    display:flex; align-items:center; gap:10px;
+    z-index:2000;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .35s ease, transform .35s ease;
+  }
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+  .toast svg{width:18px;height:18px; color:var(--gold-light); flex-shrink:0;}
+
+  /* ---------- Reduced motion ---------- */
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ===================== RESPONSIVE ===================== */
+  @media (max-width:1024px){
+    .hero-inner{grid-template-columns:1fr; text-align:center;}
+    .hero-text p{margin-inline:auto;}
+    .hero-trust{justify-content:center;}
+    .hero-media{order:-1; max-width:380px; margin:0 auto;}
+    .product-grid{grid-template-columns:repeat(2,1fr);}
+    .why-grid{grid-template-columns:repeat(3,1fr); gap:20px;}
+    .app-cta-inner{grid-template-columns:1fr; text-align:center;}
+    .app-cta p{margin-inline:auto;}
+    .store-btns{justify-content:center;}
+    .app-cta-media{order:-1;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+
+  @media (max-width:860px){
+    .nav-links{
+      position:fixed;
+      top:0; left:0; right:0;
+      background:var(--cream);
+      flex-direction:column;
+      align-items:stretch;
+      padding:100px 30px 40px;
+      gap:6px;
+      box-shadow:var(--shadow-lg);
+      transform:translateY(-110%);
+      transition:transform .45s var(--ease);
+      z-index:999;
+    }
+    .nav-links.open{transform:translateY(0);}
+    .nav-links a{
+      color:var(--coffee-dark) !important;
+      padding:14px 6px;
+      border-bottom:1px solid rgba(111,78,55,0.1);
+      font-size:1.05rem;
+    }
+    .nav-links a::after{display:none;}
+    .nav-toggle{display:flex;}
+    .nav-cta .btn-primary.nav-order{display:none;}
+    .sticky-cta{display:flex;}
+    .bestsellers{padding-bottom:60px;}
+  }
+
+  @media (max-width:760px){
+    .product-grid{grid-template-columns:1fr; gap:24px;}
+    .why-grid{grid-template-columns:1fr; gap:18px;}
+    .t-track{
+      grid-template-columns:100%;
+      grid-auto-flow:column;
+      grid-auto-columns:88%;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      padding-bottom:8px;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-width:none;
+    }
+    .t-track::-webkit-scrollbar{display:none;}
+    .t-card{scroll-snap-align:center;}
+    .t-dots{display:flex;}
+    .footer-grid{grid-template-columns:1fr; gap:32px;}
+    .footer-bottom{flex-direction:column; text-align:center;}
+    .section-head{flex-direction:column; align-items:flex-start;}
+  }
+
+  @media (max-width:480px){
+    .container{padding:0 18px;}
+    .hero{padding-top:100px;}
+    .hero-badge{
+      position:static;
+      margin-top:18px;
+      justify-content:center;
+    }
+    .hero-media-frame{aspect-ratio:1/1;}
+    .btn{padding:14px 26px; font-size:.95rem;}
+    .bestsellers, .why-us, .testimonials, .app-cta{padding-top:70px; padding-bottom:70px;}
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="visually-hidden">تخطى إلى المحتوى الرئيسي</a>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="#main" class="logo" aria-label="Bean & Bite - الصفحة الرئيسية">
+      <span class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M3 9H17V15C17 17.7614 14.7614 20 12 20H8C5.23858 20 3 17.7614 3 15V9Z" stroke="#4B3225" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M17 10H18.5C19.8807 10 21 11.1193 21 12.5C21 13.8807 19.8807 15 18.5 15H17" stroke="#4B3225" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M7 5.5C7 4.5 8 4.5 8 3.5M11 5.5C11 4.5 12 4.5 12 3.5" stroke="#4B3225" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </span>
+      Bean &amp; Bite
+    </a>
+
+    <nav class="nav-links" id="navLinks" aria-label="التنقل الرئيسي">
+      <a href="#hero">الرئيسية</a>
+      <a href="#bestsellers">الأطباق المميزة</a>
+      <a href="#why-us">لماذا نحن</a>
+      <a href="#testimonials">آراء العملاء</a>
+      <a href="#app-download">حمّل التطبيق</a>
+    </nav>
+
+    <div class="nav-cta">
+      <a href="#bestsellers" class="btn btn-primary btn-sm nav-order">اطلب أونلاين</a>
+      <button class="nav-toggle" id="navToggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="navLinks">
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-pattern" aria-hidden="true"></div>
+    <div class="steam steam-1" aria-hidden="true">
+      <svg viewBox="0 0 40 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 80C10 60 25 60 25 40C25 20 10 20 10 0" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>
+    </div>
+    <div class="steam steam-2" aria-hidden="true">
+      <svg viewBox="0 0 40 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 80C10 60 25 60 25 40C25 20 10 20 10 0" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>
+    </div>
+
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <h1>انتعاش الصيف ودفء القهوة.. <span class="accent">كل ما تحبه</span> في مكان واحد!</h1>
+        <p>اطلب الآن من Bean &amp; Bite واستمتع بتوصيل سريع لقهوتك المفضلة وجبتك الخفيفة أينما كنت.</p>
+        <div class="hero-ctas">
+          <a href="#bestsellers" class="btn btn-primary" id="heroOrderBtn">
+            اطلب أونلاين الآن
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#app-download" class="btn btn-outline">حمّل التطبيق</a>
+        </div>
+        <div class="hero-trust">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <small>+10,000 عميل سعيد يثقون بـ Bean &amp; Bite</small>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <div class="hero-media-frame">
+          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=900&auto=format&fit=crop" alt="فنجان قهوة Bean & Bite مع رغوة فنية ومشروب صيفي منعش" loading="eager" width="900" height="945">
+        </div>
+        <div class="hero-badge">
+          <span class="num">15</span>
+          <div>
+            <small>دقيقة</small>
+            <small>متوسط وقت التوصيل</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-cue" aria-hidden="true">
+      <div class="dot-track"><span class="dot"></span></div>
+      <span>مرر للأسفل</span>
+    </div>
+  </section>
+
+  <!-- ================= BEST SELLERS ================= -->
+  <section class="bestsellers" id="bestsellers" aria-labelledby="bestsellers-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">الأكثر طلباً</span>
+          <h2 class="section-title" id="bestsellers-title">مفضّلات عملائنا</h2>
+          <p class="section-sub">تشكيلة مختارة بعناية من أكثر المشروبات والأطباق التي يعشقها زوارنا كل يوم.</p>
+        </div>
+      </div>
+
+      <div class="product-grid reveal-stagger">
+        <article class="product-card reveal" style="--i:0">
+          <div class="product-media">
+            <span class="product-tag">الأكثر مبيعاً</span>
+            <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=800&auto=format&fit=crop" alt="آيس سبانش لاتيه باردة في كوب شفاف مع طبقات الحليب والقهوة" loading="lazy" width="800" height="620">
+          </div>
+          <div class="product-body">
+            <div class="product-top">
+              <h3 class="product-name">Iced Spanish Latte</h3>
+              <span class="product-price">95 ج.م</span>
+            </div>
+            <p class="product-desc">إسبريسو غني مع حليب مكثف محلى وثلج، طبقات ناعمة بنكهة كراميلية مميزة.</p>
+            <button class="add-cart-btn" data-product="Iced Spanish Latte" data-price="95">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 3H5L7.4 14.5C7.5 15.3 8.2 16 9 16H18C18.8 16 19.5 15.3 19.6 14.5L21 7H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.4" fill="currentColor"/><circle cx="18" cy="20" r="1.4" fill="currentColor"/></svg>
+              إضافة للسلة
+            </button>
+          </div>
+        </article>
+
+        <article class="product-card reveal" style="--i:1">
+          <div class="product-media">
+            <span class="product-tag">الأكثر طلباً</span>
+            <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=800&auto=format&fit=crop" alt="قطعة كيك شوكولاتة داكنة طرية مع طبقة جاناش لامعة" loading="lazy" width="800" height="620">
+          </div>
+          <div class="product-body">
+            <div class="product-top">
+              <h3 class="product-name">Dark Chocolate Cake</h3>
+              <span class="product-price">80 ج.م</span>
+            </div>
+            <p class="product-desc">طبقات كيك طرية بشوكولاتة داكنة 70%، محضّرة طازجة يومياً بوصفة بيتية.</p>
+            <button class="add-cart-btn" data-product="Dark Chocolate Cake" data-price="80">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 3H5L7.4 14.5C7.5 15.3 8.2 16 9 16H18C18.8 16 19.5 15.3 19.6 14.5L21 7H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.4" fill="currentColor"/><circle cx="18" cy="20" r="1.4" fill="currentColor"/></svg>
+              إضافة للسلة
+            </button>
+          </div>
+        </article>
+
+        <article class="product-card reveal" style="--i:2">
+          <div class="product-media">
+            <span class="product-tag">جديد</span>
+            <img src="https://images.unsplash.com/photo-1481070555726-e2fe8357725c?q=80&w=800&auto=format&fit=crop" alt="ساندويتش تونة عصري بخبز محمص وخضار طازجة" loading="lazy" width="800" height="620">
+          </div>
+          <div class="product-body">
+            <div class="product-top">
+              <h3 class="product-name">Modern Tuna Sandwich</h3>
+              <span class="product-price">110 ج.م</span>
+            </div>
+            <p class="product-desc">تونة فريش مع صوص خاص وخضار مقرمشة بين طبقتين من خبز العجين المخمر.</p>
+            <button class="add-cart-btn" data-product="Modern Tuna Sandwich" data-price="110">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 3H5L7.4 14.5C7.5 15.3 8.2 16 9 16H18C18.8 16 19.5 15.3 19.6 14.5L21 7H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.4" fill="currentColor"/><circle cx="18" cy="20" r="1.4" fill="currentColor"/></svg>
+              إضافة للسلة
+            </button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHY US ================= -->
+  <section class="why-us" id="why-us" aria-labelledby="why-title">
+    <div class="container">
+      <div class="center reveal" style="max-width:620px;">
+        <span class="eyebrow">لماذا Bean &amp; Bite</span>
+        <h2 class="section-title" id="why-title">تجربة قهوة لا تشبه غيرها</h2>
+        <p class="section-sub center">من اختيار الحبوب إلى وصول طلبك لباب بيتك، كل خطوة مدروسة لتمنحك الأفضل دائماً.</p>
+      </div>
+
+      <div class="why-grid reveal-stagger">
+        <div class="why-card reveal" style="--i:0">
+          <div class="why-icon" aria-hidden="true">☕</div>
+          <h3>قهوة مختصة 100%</h3>
+          <p>حبوب مختارة بعناية من أفضل المزارع، محمصة طازجة لضمان نكهة غنية في كل رشفة.</p>
+        </div>
+        <div class="why-card reveal" style="--i:1">
+          <div class="why-icon" aria-hidden="true">⚡</div>
+          <h3>تحضير سريع وطازج</h3>
+          <p>فريقنا يحضّر طلبك لحظة استلامه لضمان أعلى جودة وطعم طازج في كل مرة.</p>
+        </div>
+        <div class="why-card reveal" style="--i:2">
+          <div class="why-icon" aria-hidden="true">🚚</div>
+          <h3>توصيل يحافظ على الجودة</h3>
+          <p>تغليف ذكي يحافظ على الحرارة والبرودة المثالية حتى تصل قهوتك كما طلبتها بالضبط.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TESTIMONIALS ================= -->
+  <section class="testimonials" id="testimonials" aria-labelledby="testimonials-title">
+    <div class="container">
+      <div class="reveal">
+        <span class="eyebrow">آراء عملائنا</span>
+        <h2 class="section-title" id="testimonials-title">ماذا يقول عملاؤنا عنا</h2>
+        <p class="section-sub">آلاف التجارب الإيجابية تؤكد التزامنا بالجودة في كل تفصيلة.</p>
+      </div>
+
+      <div class="t-track-wrap reveal">
+        <div class="t-track" id="tTrack">
+          <article class="t-card">
+            <div class="t-stars" aria-label="تقييم 5 من 5 نجوم">★★★★★</div>
+            <p class="t-quote">"أفضل قهوة جربتها منذ فترة طويلة، والتوصيل سريع جداً."</p>
+            <div class="t-person">
+              <span class="t-avatar" aria-hidden="true">س.أ</span>
+              <div>
+                <strong>سارة أحمد</strong>
+                <span>عميلة دائمة</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="t-card">
+            <div class="t-stars" aria-label="تقييم 5 من 5 نجوم">★★★★★</div>
+            <p class="t-quote">"الحلويات طازجة ولذيذة، والخدمة ممتازة."</p>
+            <div class="t-person">
+              <span class="t-avatar" aria-hidden="true">م.ك</span>
+              <div>
+                <strong>محمد كمال</strong>
+                <span>عميل دائم</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="t-card">
+            <div class="t-stars" aria-label="تقييم 5 من 5 نجوم">★★★★★</div>
+            <p class="t-quote">"تجربة رائعة من الطلب حتى الاستلام، أنصح الجميع بالتجربة."</p>
+            <div class="t-person">
+              <span class="t-avatar" aria-hidden="true">ن.ع</span>
+              <div>
+                <strong>نور العبدالله</strong>
+                <span>عميلة جديدة</span>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="t-dots" id="tDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= APP DOWNLOAD CTA ================= -->
+  <section class="app-cta" id="app-download" aria-labelledby="app-cta-title">
+    <div class="container app-cta-inner">
+      <div class="app-cta-text reveal">
+        <span class="eyebrow" style="background:rgba(255,255,255,0.1); color:var(--gold-light);">تطبيق Bean &amp; Bite</span>
+        <h2 id="app-cta-title">حمّل التطبيق واطلب بضغطة واحدة</h2>
+        <p>تتبّع طلبك لحظة بلحظة، اجمع نقاط المكافآت، واحصل على عروض حصرية لا تجدها إلا داخل التطبيق.</p>
+        <div class="store-btns">
+          <a href="#" class="store-btn" aria-label="حمّل التطبيق من App Store">
+            <svg viewBox="0 0 24 24" fill="#4B3225" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.41 2.07-1.23 2.79-.82.71-1.79 1.07-2.9.99-.13-1.1.31-2.05 1.14-2.83.78-.73 1.84-1.16 2.99-1.95 0 0 0 .67 0 1z M21.5 17.7c-.45 1.04-.99 2.01-1.62 2.92-.86 1.24-1.56 2.1-2.1 2.58-.83.78-1.72 1.18-2.67 1.2-.68.01-1.5-.19-2.46-.6-.96-.41-1.84-.6-2.65-.6-.85 0-1.75.19-2.71.6-.96.41-1.74.62-2.34.64-.91.04-1.82-.37-2.73-1.22-.59-.52-1.32-1.41-2.2-2.69-.94-1.36-1.71-2.94-2.32-4.74-.65-1.94-.98-3.81-.98-5.62 0-2.07.45-3.86 1.34-5.35.7-1.2 1.64-2.15 2.8-2.84 1.17-.7 2.43-1.06 3.79-1.08.72 0 1.66.22 2.84.67 1.17.45 1.93.67 2.27.67.25 0 1.09-.26 2.51-.78 1.34-.48 2.48-.68 3.42-.6 2.52.2 4.41 1.2 5.67 2.99-2.25 1.37-3.37 3.28-3.35 5.74.02 1.91.71 3.5 2.06 4.76.61.59 1.3 1.04 2.07 1.36-.16.49-.34.96-.55 1.41z" transform="translate(1,0)"/></svg>
+            <span class="store-label"><small>حمّل التطبيق من</small><strong>App Store</strong></span>
+          </a>
+          <a href="#" class="store-btn" aria-label="احصل على التطبيق من Google Play">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3.6 2.2C3.2 2.6 3 3.2 3 4V20C3 20.8 3.2 21.4 3.6 21.8L3.7 21.9L13.5 12.1V12V11.9L3.7 2.1L3.6 2.2Z" fill="#4B3225"/><path d="M16.8 15.4L13.5 12.1V12V11.9L16.8 8.6L16.9 8.7L20.8 10.9C21.9 11.5 21.9 12.5 20.8 13.1L16.9 15.3L16.8 15.4Z" fill="#C9A24B"/><path d="M16.9 15.3L13.5 12L3.6 21.8C4 22.2 4.6 22.2 5.3 21.9L16.9 15.3Z" fill="#4B3225"/><path d="M16.9 8.7L5.3 2.1C4.6 1.7 4 1.8 3.6 2.2L13.5 12L16.9 8.7Z" fill="#4B3225"/></svg>
+            <span class="store-label"><small>احصل عليه من</small><strong>Google Play</strong></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="app-cta-media reveal">
+        <div class="phone-mock">
+          <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?q=80&w=600&auto=format&fit=crop" alt="معاينة تطبيق Bean & Bite على شاشة هاتف ذكي" loading="lazy" width="600" height="1100">
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#main" class="logo">
+          <span class="logo-mark">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M3 9H17V15C17 17.7614 14.7614 20 12 20H8C5.23858 20 3 17.7614 3 15V9Z" stroke="#4B3225" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M17 10H18.5C19.8807 10 21 11.1193 21 12.5C21 13.8807 19.8807 15 18.5 15H17" stroke="#4B3225" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </span>
+          Bean &amp; Bite
+        </a>
+        <p>قهوة مختصة وحلويات طازجة، نقدمها لك أينما كنت بأعلى مستوى من الجودة والاهتمام.</p>
+        <div class="social-row">
+          <a href="#" aria-label="تابعنا على Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          </a>
+          <a href="#" aria-label="تابعنا على Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M14 9H17V6H14C12.3 6 11 7.3 11 9V11H9V14H11V21H14V14H16.5L17 11H14V9.5C14 9.2 14.2 9 14.5 9H14Z"/></svg>
+          </a>
+          <a href="#" aria-label="تابعنا على TikTok">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M16 4C16.3 6.3 17.8 7.8 20 8V11C18.5 11 17.1 10.5 16 9.7V15.5C16 18.5 13.5 21 10.5 21C7.5 21 5 18.5 5 15.5C5 12.5 7.5 10 10.5 10C10.8 10 11.2 10 11.5 10.1V13.2C11.2 13.1 10.9 13 10.5 13C9.1 13 8 14.1 8 15.5C8 16.9 9.1 18 10.5 18C11.9 18 13 16.9 13 15.5V3H16V4Z"/></svg>
+          </a>
+          <a href="#" aria-label="تابعنا على X">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 4L20 20M20 4L4 20"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>روابط سريعة</h4>
+        <ul>
+          <li><a href="#hero">الرئيسية</a></li>
+          <li><a href="#bestsellers">المنيو</a></li>
+          <li><a href="#why-us">من نحن</a></li>
+          <li><a href="#testimonials">آراء العملاء</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>الدعم</h4>
+        <ul>
+          <li><a href="#">تواصل معنا</a></li>
+          <li><a href="#">الأسئلة الشائعة</a></li>
+          <li><a href="#">سياسة الخصوصية</a></li>
+          <li><a href="#">الشروط والأحكام</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>مواعيد العمل</h4>
+        <div class="footer-hours">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7V12L15 14"/></svg>
+          <span>يومياً<br>8:00 صباحاً – 12:00 منتصف الليل</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Bean &amp; Bite. All Rights Reserved.</span>
+      <div class="footer-legal">
+        <a href="#">الخصوصية</a>
+        <a href="#">الشروط</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= STICKY MOBILE ORDER BAR ================= -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="info">
+    <strong>جاهز لطلبك؟</strong>
+    <span>توصيل خلال 15 دقيقة تقريباً</span>
+  </div>
+  <a href="#bestsellers" class="btn btn-primary btn-sm">اطلب الآن</a>
+</div>
+
+<!-- ================= TOAST ================= -->
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M4 12L9 17L20 6"/></svg>
+  <span id="toastMsg">تمت الإضافة للسلة</span>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* Navbar scroll state */
+  var navbar = document.getElementById('navbar');
+  var stickyCta = document.getElementById('stickyCta');
+  var lastY = window.scrollY;
+
+  function onScroll(){
+    var y = window.scrollY;
+    if(y > 40){ navbar.classList.add('scrolled'); } else { navbar.classList.remove('scrolled'); }
+
+    // sticky mobile bar appears after hero, hides near footer
+    var heroH = document.getElementById('hero').offsetHeight;
+    var docH = document.documentElement.scrollHeight;
+    var nearBottom = (y + window.innerHeight) > (docH - 200);
+    if(y > heroH * 0.6 && !nearBottom){
+      stickyCta.classList.add('show');
+    } else {
+      stickyCta.classList.remove('show');
+    }
+    lastY = y;
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* Mobile nav toggle */
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', function(){
+    var isOpen = navLinks.classList.toggle('open');
+    navToggle.classList.toggle('active', isOpen);
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  navLinks.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', function(){
+      navLinks.classList.remove('open');
+      navToggle.classList.remove('active');
+      navToggle.setAttribute('aria-expanded','false');
+      document.body.style.overflow = '';
+    });
+  });
+
+  /* Scroll reveal animations */
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.15, rootMargin:'0px 0px -60px 0px'});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in-view'); });
+  }
+
+  /* Add to cart -> toast feedback */
+  var toast = document.getElementById('toast');
+  var toastMsg = document.getElementById('toastMsg');
+  var toastTimer;
+  var cartCount = 0;
+
+  document.querySelectorAll('.add-cart-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var name = btn.getAttribute('data-product');
+      cartCount++;
+      toastMsg.textContent = 'تمت إضافة "' + name + '" للسلة';
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function(){ toast.classList.remove('show'); }, 2600);
+
+      btn.classList.add('added');
+      var original = btn.innerHTML;
+      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12L9 17L20 6"/></svg> تمت الإضافة';
+      setTimeout(function(){
+        btn.classList.remove('added');
+        btn.innerHTML = original;
+      }, 1600);
+    });
+  });
+
+  /* Testimonial mobile dots */
+  var tTrack = document.getElementById('tTrack');
+  var tDotsWrap = document.getElementById('tDots');
+  var cards = tTrack.querySelectorAll('.t-card');
+  cards.forEach(function(_, i){
+    var dot = document.createElement('button');
+    dot.setAttribute('aria-label', 'عرض رأي العميل رقم ' + (i+1));
+    if(i === 0) dot.classList.add('active');
+    dot.addEventListener('click', function(){
+      cards[i].scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+    });
+    tDotsWrap.appendChild(dot);
+  });
+  var dotEls = tDotsWrap.querySelectorAll('button');
+
+  if('IntersectionObserver' in window){
+    var tObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var idx = Array.prototype.indexOf.call(cards, entry.target);
+        if(entry.isIntersecting && idx > -1){
+          dotEls.forEach(function(d){ d.classList.remove('active'); });
+          dotEls[idx].classList.add('active');
+        }
+      });
+    }, {root: tTrack, threshold:0.6});
+    cards.forEach(function(c){ tObserver.observe(c); });
+  }
+
+  /* Smooth scroll offset correction for fixed navbar (native CSS scroll-behavior handles most cases) */
+
+})();
+</script>
+
+</body>
+</html>
